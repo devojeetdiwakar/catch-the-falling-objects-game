@@ -1,99 +1,130 @@
-# catch-the-falling-objects-game
-A Java-based "Catch the Falling Objects" game with single and multiplayer modes, difficulty selection, sound effects, score saving via SQLite, and real-time UI with score/lives tracking. Built using Java Swing.
-
 # 🎮 Catch the Falling Objects - Java Game
 
-This is a fun and interactive Java-based desktop game where players catch falling objects using a movable basket. The game supports **single-player** and **two-player** modes, has **multiple difficulty levels**, **sound effects**, **real-time score/lives display**, and saves high scores using an embedded SQLite database.
+A fun arcade-style game built in Java using Swing, where the player catches falling objects with a basket while avoiding obstacles and collecting bonuses. The game supports multiple difficulty levels, sound effects, hints, and stores high scores using a local SQLite database.
 
-## 🕹️ Features
+## 🚀 Features
 
-- 🧍‍♂️ Single Player and 🧍‍♂️🧍‍♂️ Two-Player Modes (split-screen style)
-- 💪 Difficulty Levels: Easy, Medium, Hard
-- 🎯 Catch falling items to score points
-- ⚠️ Bonus and Obstacle objects for power-ups and penalties
-- 🔊 Sound effects for catching or missing objects
-- ❤️ Lives and Score displayed with icons
-- 💾 Score saving using SQLite database
-- 🔁 Press `R` to restart game anytime
-- 👀 Hint system for predicting object spawn
-- 🎨 GUI built using Java Swing
-
-## 📸 Screenshots
-
-*(Include screenshots here if available)*
-
-## 🧱 Requirements
-
-- Java JDK 8 or higher
-- SQLite JDBC driver (included in most setups)
-- IntelliJ IDEA / VS Code / Eclipse (any IDE with Java support)
-
-## 🚀 How to Run
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/your-username/catch-game-java.git
-   cd catch-game-java
-Compile the game:
-
-javac CatchGame.java
-
-Run the game:
-
-java CatchGame
-
-The game will prompt for your name and then ask for difficulty. Select one to begin.
-
-Controls:
-
-Single Player:
-
-Move Left: ← or A
-
-Move Right: → or D
-
-Multiplayer (split screen):
-
-Player 1: A (left), D (right)
-
-Player 2: ← and → keys
-
-Restart: R
-
-🗃️ File Structure
-
-CatchGame.java         // Main game logic
-DatabaseManager.java   // SQLite database logic
-resources/
-├── catch.wav          // Sound when object is caught
-├── miss.wav           // Sound when object is missed
-├── ...
-💾 Score Saving
-Scores are saved locally using a lightweight SQLite database (leaderboard.db). The top 10 scores are printed in the console after each game over.
-
-🛠️ Customization
-You can:
-
-Replace colored rectangles with images for basket and objects.
-
-Adjust game speed or difficulty in setDifficulty() method.
-
-Add more object types or power-ups.
-
-📚 License
-This project is open-source and available under the MIT License.
-
-🙌 Acknowledgements
-Developed by [Your Name], inspired by classic arcade-style games.
-Sound effects and icons are sourced from royalty-free resources.
+- 🧺 Player-controlled basket to catch falling objects
+- 🔥 Difficulty selection (Easy, Medium, Hard)
+- 🎯 Bonus items (+5 points) and obstacle items (−3 points)
+- 💡 Hint system with visual hints
+- 🔊 Sound effects for catch and miss events
+- 🕹️ Keyboard controls:
+  - **Left Arrow** → Move basket left
+  - **Right Arrow** → Move basket right
+  - **R** → Restart the game
+- 💾 High score saving with SQLite
+- 🏆 Displays top 10 scores in the console after game over
 
 ---
 
-Let me know if you want:
-- A version with image/icon integration instructions.
-- GitHub Actions CI setup (for educational Java projects).
-- Java `.jar` packaging instructions.
-- Scoreboard UI in a separate panel/window.
+## 🖼️ Game Preview
 
-I'll tailor it to your project style.
+> You catch falling red blocks, collect yellow bonuses, and avoid black obstacles. Earn points and survive with limited lives.
+
+---
+
+🛠️ Tech Stack
+Tech	Purpose
+Java (Swing)	UI and game mechanics
+SQLite	Store player high scores
+Java Audio	Play .wav sound effects
+JDBC	Database connectivity
+
+---
+
+🚀 How to Run
+Clone or download the repository.
+Open in any Java IDE (Eclipse, IntelliJ, VS Code).
+Make sure catch.wav and miss.wav are correctly placed.
+Run the CatchGame.java file.
+🎉 Start playing!
+
+javac CatchGame.java
+java CatchGame
+
+---
+
+🏆 Leaderboard Sample
+
+Top Scores:
+Alice: 102
+Bob: 85
+Charlie: 78
+...
+Scores are saved in an SQLite database leaderboard.db and displayed in the console when the game ends.
+
+---
+
+🧠 Game Mechanics
+Object	Color	Effect
+Falling	Red	+1 point
+Bonus	Yellow	+5 points
+Obstacle	Black	−3 points
+Hint Box	Blue	Shows where to move next
+
+Lives: 🧡 10 to 20 (based on difficulty)
+Game Over: When lives drop to 0
+Restart: Press R
+
+📂 Project Structure
+
+CatchTheFallingObjects/
+├── CatchGame.java         # Main game + UI
+├── DatabaseManager.java   # Score handling (SQLite)
+├── catch.wav              # Catch sound effect
+├── miss.wav               # Miss sound effect
+├── screenshot.png         # Game preview (optional)
+└── leaderboard.db         # Auto-generated database
+
+---
+
+
+---
+
+## 🛠️ Requirements
+
+- Java 8 or later
+- SQLite JDBC Driver (included in Java standard library for embedded)
+- Compatible with IntelliJ, Eclipse, or any Java-supporting IDE
+
+---
+
+## 🧑‍💻 How to Run
+
+1. **Clone or Download** this repository.
+2. Open the project in your preferred Java IDE.
+3. Make sure the `catch.wav` and `miss.wav` files are placed in the correct path.
+4. Run the `CatchGame.java` file.
+5. Enter your name, select a difficulty level, and start playing!
+
+---
+
+## 🧠 Gameplay Logic
+
+- **Falling Objects (Red):** +1 point if caught, −1 life if missed.
+- **Bonus Objects (Yellow):** +5 points when caught.
+- **Obstacles (Black):** −3 points if caught.
+- **Hints:** Occasionally show upcoming object positions in blue.
+- **Game Over:** Triggered when lives reach 0. Press `R` to restart.
+
+---
+
+## 📊 Leaderboard
+
+- Scores are stored in `leaderboard.db`.
+- Top 10 scores are printed to the console after each game ends.
+- Uses an embedded SQLite database with the table schema:
+
+   sql
+CREATE TABLE IF NOT EXISTS scores (
+    name TEXT,
+    score INTEGER
+);
+
+---
+
+👨‍💻 Author
+Devojeet Diwakar
+🎓 B.Tech Student, Amity University
+💡 Java Developer | Blockchain & IoT Enthusiast
